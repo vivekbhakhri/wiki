@@ -7,13 +7,12 @@ from markdown2 import Markdown
 
 markdowner = Markdown()
 
-def index(request):
-    return render(request, "encyclopedia/index.html", {
-        "entries": util.list_entries()
-    })
 
-def title(request):
-    return HttpResponse("I'm working")
+def index(request):
+    entries = util.list_entries()
+    return render(request, "encyclopedia/index.html", {
+        "entries": entries
+    })
 
 def entry(request, title):
     page = util.get_entry(title)
